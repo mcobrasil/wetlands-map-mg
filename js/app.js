@@ -1,20 +1,39 @@
 import * as maplibregl
 from 'https://unpkg.com/maplibre-gl@^6.16.0/dist/maplibre-gl.mjs';
 
+const DATA_BASE =
+  'https://pub-b94dc78f2a5546f6b92f1e730dacc103.r2.dev';
+
 const cogUrl =
- new URL('../NORTH/MG_RF_NORTH_AU_binary_WEB_3857_256.tif',
-         window.location.href).href;
+  `${DATA_BASE}/rasters/MG_RF_NORTH_AU_binary_WEB_3857_256.tif`;
 
 const urls = {
- mg: new URL('../vectors/mg_limite.geojson',window.location.href).href,
- municipios: new URL('../vectors/mg_municipios.geojson',window.location.href).href,
- imediatas: new URL('../vectors/mg_regioes_imediatas.geojson',window.location.href).href,
- intermediarias: new URL('../vectors/mg_regioes_intermediarias.geojson',window.location.href).href,
- biomas: new URL('../vectors/mg_biomas.geojson',window.location.href).href,
- uc_federal: new URL('../vectors/mg_uc_federais.geojson',window.location.href).href,
- uc_estadual: new URL('../vectors/mg_uc_estaduais.geojson',window.location.href).href,
- uc_municipal: new URL('../vectors/mg_uc_municipais.geojson',window.location.href).href,
- bacias: new URL('../vectors/mg_bacias_hidrograficas.geojson',window.location.href).href
+  mg:
+    `${DATA_BASE}/vectors/mg_limite.geojson`,
+
+  municipios:
+    `${DATA_BASE}/vectors/mg_municipios.geojson`,
+
+  imediatas:
+    `${DATA_BASE}/vectors/mg_regioes_imediatas.geojson`,
+
+  intermediarias:
+    `${DATA_BASE}/vectors/mg_regioes_intermediarias.geojson`,
+
+  biomas:
+    `${DATA_BASE}/vectors/mg_biomas.geojson`,
+
+  uc_federal:
+    `${DATA_BASE}/vectors/mg_uc_federais.geojson`,
+
+  uc_estadual:
+    `${DATA_BASE}/vectors/mg_uc_estaduais.geojson`,
+
+  uc_municipal:
+    `${DATA_BASE}/vectors/mg_uc_municipais.geojson`,
+
+  bacias:
+    `${DATA_BASE}/vectors/mg_bacias_hidrograficas.geojson`
 };
 
 maplibregl.addProtocol('cog',MaplibreCOGProtocol.cogProtocol);
