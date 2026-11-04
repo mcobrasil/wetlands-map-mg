@@ -63,32 +63,24 @@ summary{cursor:pointer;font-weight:600}
  h1{font-size:17px}
 }
 
-
-/* A7.1_BASEMAP_CSS */
-
-.basemap-control{
- margin:7px 0 12px;
+/* A7.1b_BASEMAP_BOX */
+.basemap-box{
+ position:absolute;top:105px;right:10px;z-index:20;width:160px;
+ padding:9px 10px;background:rgba(255,255,255,.96);
+ border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.18)
 }
-
-.basemap-control label{
- display:block;
- font-size:13px;
- margin-bottom:6px;
+.basemap-box label{
+ display:block;margin-bottom:5px;
+ font-size:12px;font-weight:700;color:#475569
 }
-
-#basemap-select{
- width:100%;
- padding:7px 9px;
- border:1px solid #cbd5e1;
- border-radius:7px;
- background:#fff;
- color:#334155;
- font:13px Arial,Helvetica,sans-serif;
- cursor:pointer;
+.basemap-box select{
+ width:100%;padding:6px 8px;border:1px solid #cbd5e1;
+ border-radius:6px;background:#fff;color:#334155;
+ font:12px Arial,Helvetica,sans-serif;cursor:pointer
 }
-
-#basemap-select:focus{
- outline:2px solid rgba(8,127,189,.18);
- border-color:#087fbd;
+.basemap-box select:focus{
+ outline:2px solid rgba(8,127,189,.18);border-color:#087fbd
 }
-
+@media(max-width:650px){
+ .basemap-box{top:100px;right:8px;width:140px}
+}
