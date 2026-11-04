@@ -84,3 +84,21 @@ summary{cursor:pointer;font-weight:600}
 @media(max-width:650px){
  .basemap-box{top:100px;right:8px;width:140px}
 }
+
+
+/* A7.2_BASEMAP_POSITION */
+.basemap-box{
+ top:16px !important;
+ right:16px !important;
+ bottom:auto !important;
+ width:160px;
+ z-index:20
+}
+@media(max-width:650px){
+ .basemap-box{
+  top:10px !important;
+  right:10px !important;
+  bottom:auto !important;
+  width:140px
+ }
+}

@@ -55,7 +55,7 @@ const map=new maplibregl.Map({
  zoom:6
 });
 
-map.addControl(new maplibregl.NavigationControl(),'top-right');
+map.addControl(new maplibregl.NavigationControl(),'bottom-right');
 map.addControl(new maplibregl.ScaleControl({maxWidth:120,unit:'metric'}),'bottom-left');
 
 let initialBounds=null;
@@ -101,7 +101,7 @@ const vectorDefs = {
  biomas:{
    url:urls.biomas,
    visible:false,
-   color:'#76E633',
+   color:'#008F1C',
    width:1.8,
    dash:[4,2]
  },
@@ -129,7 +129,7 @@ const vectorDefs = {
  bacias:{
    url:urls.bacias,
    visible:false,
-   color:'#183B66',
+   color:'#0B3CB8',
    width:1.8,
    dash:[6,3]
  }
@@ -252,7 +252,7 @@ map.on('load',async()=>{
           'fill-color':[
             'match',
             ['get','Bioma'],
-            'Mata Atlântica','#CCF2DD',
+            'Mata Atlântica','#008F1C',
             'Cerrado','#76E633',
             'Caatinga','#DBFF61',
             '#94a3b8'
@@ -286,7 +286,7 @@ map.on('load',async()=>{
         ? [
             'match',
             ['get','Bioma'],
-            'Mata Atlântica','#CCF2DD',
+            'Mata Atlântica','#008F1C',
             'Cerrado','#76E633',
             'Caatinga','#DBFF61',
             '#64748b'
