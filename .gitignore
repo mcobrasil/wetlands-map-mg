@@ -1,0 +1,38 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Credenciais
+.env
+.env.*
+*.key
+*.pem
+
+# Dados geoespaciais pesados
+*.tif
+*.tiff
+*.vrt
+
+# Diretórios não públicos
+NORTH/
+vectors/
+data/
+private/
+model/
+models/
+samples/
+training/
+validation/
+notebooks/
+
+# Artefatos de modelagem
+*.pkl
+*.joblib
+
+# Python
+__pycache__/
+*.pyc
+
+# Backups
+*_backup.*
+index_singlefile_source.html

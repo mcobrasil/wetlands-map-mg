@@ -1,0 +1,13 @@
+# Licensing
+
+This repository uses separate licenses for source code and scientific/publication content.
+
+- Source code (HTML, CSS and JavaScript): MIT License. See `LICENSE-CODE`.
+- Original maps, documentation, explanatory text and other non-code content
+  authored for the Wetlands Map MG project: Creative Commons Attribution 4.0
+  International (CC BY 4.0). See `LICENSE-CONTENT.md`.
+- Third-party datasets, basemaps and external materials retain their original
+  licenses, terms and attribution requirements.
+
+The definitive scientific citation for the wetland mapping product will be
+added after publication of the corresponding thesis and/or journal article.

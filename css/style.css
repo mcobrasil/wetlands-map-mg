@@ -1,0 +1,64 @@
+:root{
+ --text:#1f2937; --muted:#64748b; --border:#e2e8f0;
+ --accent:#087fbd; --soft:#f8fafc;
+}
+html,body{margin:0;width:100%;height:100%;font-family:Arial,Helvetica,sans-serif;color:var(--text)}
+#map{position:absolute;inset:0}
+
+.panel{
+ position:absolute;top:16px;left:16px;z-index:10;width:320px;
+ max-height:calc(100vh - 60px);overflow-y:auto;
+ background:rgba(255,255,255,.97);border-radius:12px;padding:17px;
+ box-shadow:0 4px 18px rgba(0,0,0,.20)
+}
+h1{font-size:19px;line-height:1.2;margin:0 0 4px}
+.subtitle{font-size:12px;color:var(--muted);margin-bottom:15px}
+
+.group-title{
+ margin:15px 0 7px;padding-top:12px;border-top:1px solid var(--border);
+ font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;
+ letter-spacing:.05em
+}
+
+.row{display:flex;align-items:center;gap:9px;margin:8px 0}
+.row label{font-size:13px;cursor:pointer}
+input[type=checkbox],input[type=range]{accent-color:var(--accent)}
+input[type=range]{width:100%}
+
+.legend{display:flex;align-items:center;gap:9px;font-size:13px;margin-top:10px}
+.swatch{width:23px;height:15px;border-radius:3px;background:#35B9E6}
+
+.line-sample{width:25px;height:0;border-top-style:solid}
+.mg-line{border-top-width:3px;border-top-color:#303030}
+.mun-line{border-top-width:1px;border-top-color:#656565}
+.ri-line{border-top-width:2px;border-top-color:#e07a00;border-top-style:dashed}
+.rint-line{border-top-width:2px;border-top-color:#7b2cbf}
+.bioma-line{border-top-width:2px;border-top-color:#26894a;border-top-style:dashed}
+
+button{
+ width:100%;border:1px solid #cbd5e1;background:#fff;color:#334155;
+ border-radius:7px;padding:8px 10px;font-size:13px;cursor:pointer
+}
+button:hover{background:var(--soft)}
+
+details{margin-top:13px;font-size:12px;line-height:1.45}
+summary{cursor:pointer;font-weight:600}
+.info{margin-top:9px;color:#475569}
+.notice{margin-top:11px;padding:9px;background:#f1f5f9;border-radius:7px;font-size:11px;color:#475569}
+.tech{margin-top:8px;padding:8px;background:#f8fafc;border-radius:6px;font-size:11px;color:#64748b}
+
+#hoverBox{
+ position:absolute;z-index:11;display:none;pointer-events:none;
+ background:rgba(30,41,59,.92);color:white;border-radius:5px;
+ padding:5px 8px;font-size:11px;white-space:nowrap
+}
+
+.maplibregl-popup-content{font:12px Arial,sans-serif;line-height:1.45}
+.popup-title{font-size:13px;font-weight:700;margin-bottom:5px}
+.popup-row{margin:2px 0}
+.popup-label{color:#64748b}
+
+@media(max-width:650px){
+ .panel{top:10px;left:10px;width:calc(100% - 48px);padding:13px;max-height:55vh}
+ h1{font-size:17px}
+}

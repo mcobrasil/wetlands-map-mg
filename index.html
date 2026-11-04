@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Áreas Úmidas / Wetlands — Minas Gerais</title>
+
+<link rel="stylesheet"
+ href="https://unpkg.com/maplibre-gl@^6.16.0/dist/maplibre-gl.css">
+
+<script src="https://unpkg.com/@geomatico/maplibre-cog-protocol/dist/index.js"></script>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div id="map"></div>
+<div id="hoverBox"></div>
+
+<div class="panel">
+
+<h1>Áreas Úmidas / Wetlands</h1>
+<div class="subtitle">Protótipo — Norte de Minas Gerais</div>
+
+<div class="group-title" style="border-top:none;margin-top:0;padding-top:0">
+Mapa
+</div>
+
+<div class="row">
+ <input id="toggle-wetlands" type="checkbox" checked>
+ <label for="toggle-wetlands"><b>Áreas Úmidas</b></label>
+</div>
+
+<div style="font-size:11px;color:#64748b;margin-top:8px">Opacidade das Áreas Úmidas</div>
+<div class="row">
+ <input id="opacity" type="range" min="0" max="100" value="75">
+ <span id="opacityValue" style="font-size:11px;width:34px">75%</span>
+</div>
+
+<div class="legend">
+ <span class="swatch"></span>
+ <span>Áreas Úmidas</span>
+</div>
+
+<div class="group-title">Limites administrativos</div>
+
+<div class="row">
+ <input id="toggle-mg" type="checkbox" checked>
+ <span class="line-sample mg-line"></span>
+ <label for="toggle-mg">Limite de Minas Gerais</label>
+</div>
+
+<div class="row">
+ <input id="toggle-municipios" type="checkbox">
+ <span class="line-sample mun-line"></span>
+ <label for="toggle-municipios">Municípios</label>
+</div>
+
+<div class="row">
+ <input id="toggle-imediatas" type="checkbox">
+ <span class="line-sample ri-line"></span>
+ <label for="toggle-imediatas">Regiões Imediatas</label>
+</div>
+
+<div class="row">
+ <input id="toggle-intermediarias" type="checkbox">
+ <span class="line-sample rint-line"></span>
+ <label for="toggle-intermediarias">Regiões Intermediárias</label>
+</div>
+
+<div class="group-title">Contexto ambiental</div>
+
+<!-- A4.3_BACIAS_BIOMAS -->
+<div style="font-size:13px;font-weight:700;margin:6px 0 8px">
+  Biomas
+</div>
+
+<div class="row">
+ <input id="toggle-bioma-mata" type="checkbox">
+ <span style="width:23px;height:11px;background:#1B5E20;opacity:.78;border:1px solid #1B5E20;border-radius:2px"></span>
+ <label for="toggle-bioma-mata">Mata Atlântica</label>
+</div>
+
+<div class="row">
+ <input id="toggle-bioma-cerrado" type="checkbox">
+ <span style="width:23px;height:11px;background:#6B7435;opacity:.78;border:1px solid #6B7435;border-radius:2px"></span>
+ <label for="toggle-bioma-cerrado">Cerrado</label>
+</div>
+
+<div class="row">
+ <input id="toggle-bioma-caatinga" type="checkbox">
+ <span style="width:23px;height:11px;background:#B45F3C;opacity:.78;border:1px solid #B45F3C;border-radius:2px"></span>
+ <label for="toggle-bioma-caatinga">Caatinga</label>
+</div>
+
+<!-- A4.2_UC_BEGIN -->
+<div class="group-title">Gestão e conservação</div>
+
+<div style="font-size:13px;font-weight:700;margin:6px 0 8px">
+  Unidades de Conservação
+</div>
+
+<div class="row">
+ <input id="toggle-uc-federal" type="checkbox">
+ <span style="width:23px;height:11px;background:#4C3F91;opacity:.75;border:1px solid #4C3F91;border-radius:2px"></span>
+ <label for="toggle-uc-federal">Federais</label>
+</div>
+
+<div class="row">
+ <input id="toggle-uc-estadual" type="checkbox">
+ <span style="width:23px;height:11px;background:#8B3A62;opacity:.75;border:1px solid #8B3A62;border-radius:2px"></span>
+ <label for="toggle-uc-estadual">Estaduais</label>
+</div>
+
+<div class="row">
+ <input id="toggle-uc-municipal" type="checkbox">
+ <span style="width:23px;height:11px;background:#C9738A;opacity:.75;border:1px solid #C9738A;border-radius:2px"></span>
+ <label for="toggle-uc-municipal">Municipais</label>
+</div>
+<!-- A4.2_UC_END -->
+
+<!-- A4.3_BACIAS_BEGIN -->
+<div class="group-title">Hidrografia</div>
+
+<div class="row">
+ <input id="toggle-bacias" type="checkbox">
+ <span style="
+   width:25px;
+   height:0;
+   border-top:2px dashed #183B66">
+ </span>
+ <label for="toggle-bacias">Bacias hidrográficas</label>
+</div>
+<!-- A4.3_BACIAS_END -->
+
+<div class="group-title"></div>
+<button id="resetView">↺ Voltar à visão inicial</button>
+
+<details>
+ <summary>Sobre o mapa</summary>
+ <div class="info">
+ As áreas destacadas correspondem às áreas úmidas classificadas
+ por um modelo Random Forest a partir de informações espectrais,
+ topográficas e ambientais.
+ </div>
+
+ <div class="notice">
+ Este mapa é um produto de classificação espacial e não substitui
+ levantamentos de campo, estudos técnicos específicos ou
+ delimitações legais.
+ </div>
+
+ <div class="tech">
+ <b>Informações técnicas</b><br>
+ Produto: classificação binária<br>
+ Limiar do modelo: 0,513<br>
+ Resolução nominal do produto científico: 10 m<br>
+ Situação: protótipo parcial — Norte de Minas Gerais<br><br>
+ Limites administrativos: IBGE, 2025
+ </div>
+</details>
+
+</div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
