@@ -73,56 +73,56 @@ const vectorDefs = {
  mg:{
    url:urls.mg,
    visible:true,
-   color:'#303030',
-   width:2.3,
+   color:'#222222',
+   width:3.6,
    dash:null
  },
  municipios:{
    url:urls.municipios,
    visible:false,
-   color:'#656565',
+   color:'#D9D9D9',
    width:0.8,
    dash:null
  },
  imediatas:{
    url:urls.imediatas,
    visible:false,
-   color:'#e07a00',
+   color:'#FFAB00',
    width:1.5,
    dash:[4,2]
  },
  intermediarias:{
    url:urls.intermediarias,
    visible:false,
-   color:'#7b2cbf',
+   color:'#FF4600',
    width:1.8,
    dash:null
  },
  biomas:{
    url:urls.biomas,
    visible:false,
-   color:'#26894a',
+   color:'#76E633',
    width:1.8,
    dash:[4,2]
  },
  uc_federal:{
    url:urls.uc_federal,
    visible:false,
-   color:'#4C3F91',
+   color:'#8900C9',
    width:1.7,
    dash:null
  },
  uc_estadual:{
    url:urls.uc_estadual,
    visible:false,
-   color:'#8B3A62',
+   color:'#D600D5',
    width:1.7,
    dash:null
  },
  uc_municipal:{
    url:urls.uc_municipal,
    visible:false,
-   color:'#C9738A',
+   color:'#FF5ED8',
    width:1.5,
    dash:null
  },
@@ -252,9 +252,9 @@ map.on('load',async()=>{
           'fill-color':[
             'match',
             ['get','Bioma'],
-            'Mata Atlântica','#1B5E20',
-            'Cerrado','#6B7435',
-            'Caatinga','#B45F3C',
+            'Mata Atlântica','#CCF2DD',
+            'Cerrado','#76E633',
+            'Caatinga','#DBFF61',
             '#94a3b8'
           ],
           'fill-opacity':0.18
@@ -286,9 +286,9 @@ map.on('load',async()=>{
         ? [
             'match',
             ['get','Bioma'],
-            'Mata Atlântica','#1B5E20',
-            'Cerrado','#6B7435',
-            'Caatinga','#B45F3C',
+            'Mata Atlântica','#CCF2DD',
+            'Cerrado','#76E633',
+            'Caatinga','#DBFF61',
             '#64748b'
           ]
         : d.color,
