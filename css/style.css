@@ -62,3 +62,33 @@ summary{cursor:pointer;font-weight:600}
  .panel{top:10px;left:10px;width:calc(100% - 48px);padding:13px;max-height:55vh}
  h1{font-size:17px}
 }
+
+
+/* A7.1_BASEMAP_CSS */
+
+.basemap-control{
+ margin:7px 0 12px;
+}
+
+.basemap-control label{
+ display:block;
+ font-size:13px;
+ margin-bottom:6px;
+}
+
+#basemap-select{
+ width:100%;
+ padding:7px 9px;
+ border:1px solid #cbd5e1;
+ border-radius:7px;
+ background:#fff;
+ color:#334155;
+ font:13px Arial,Helvetica,sans-serif;
+ cursor:pointer;
+}
+
+#basemap-select:focus{
+ outline:2px solid rgba(8,127,189,.18);
+ border-color:#087fbd;
+}
+

@@ -60,6 +60,15 @@ map.addControl(new maplibregl.ScaleControl({maxWidth:120,unit:'metric'}),'bottom
 
 let initialBounds=null;
 
+// -----------------------------------------------------------
+// A7.1_BASEMAP_SATELLITE
+// Guarda somente as camadas pertencentes ao estilo OpenFreeMap.
+// As camadas científicas serão adicionadas depois e não entram
+// nesta lista.
+// -----------------------------------------------------------
+
+let baseStyleLayers=[];
+
 const vectorDefs = {
  mg:{
    url:urls.mg,
@@ -129,7 +138,64 @@ const vectorDefs = {
 map.on('load',async()=>{
 
   // ---------------------------------------------------------
-  // RASTER
+  // MAPA-BASE
+  // ---------------------------------------------------------
+
+  // Registra o estado original das camadas do OpenFreeMap
+  // antes de adicionar qualquer camada do Wetlands Map.
+  baseStyleLayers =
+    map.getStyle().layers.map(layer => ({
+      id: layer.id,
+      visibility:
+        (layer.layout && layer.layout.visibility)
+        ? layer.layout.visibility
+        : 'visible'
+    }));
+
+  map.addSource('basemap-satellite',{
+    type:'raster',
+
+    tiles:[
+      'https://tiles.maps.eox.at/wmts/1.0.0/' +
+      's2cloudless-2025_3857/default/g/{z}/{y}/{x}.jpg'
+    ],
+
+    tileSize:256,
+    minzoom:0,
+    maxzoom:14,
+
+    attribution:
+      '<a href="https://cloudless.eox.at" ' +
+      'target="_blank" rel="noopener">' +
+      'EOxCloudless</a> by EOX IT Services GmbH ' +
+      '(Contains modified Copernicus Sentinel data 2025)'
+  });
+
+  // Insere o satélite abaixo de todas as camadas OpenFreeMap.
+  const firstBaseLayer =
+    baseStyleLayers.length
+    ? baseStyleLayers[0].id
+    : undefined;
+
+  map.addLayer(
+    {
+      id:'basemap-satellite',
+      type:'raster',
+      source:'basemap-satellite',
+
+      layout:{
+        visibility:'none'
+      },
+
+      paint:{
+        'raster-opacity':1
+      }
+    },
+    firstBaseLayer
+  );
+
+  // ---------------------------------------------------------
+  // RASTER — ÁREAS ÚMIDAS
   // ---------------------------------------------------------
 
   map.addSource('wetlands',{
@@ -273,6 +339,51 @@ map.on('load',async()=>{
 // -----------------------------------------------------------
 // CONTROLES
 // -----------------------------------------------------------
+
+// -----------------------------------------------------------
+// MAPA-BASE
+// -----------------------------------------------------------
+
+function setBasemap(mode){
+
+  if(!map.getLayer('basemap-satellite')){
+    return;
+  }
+
+  const satellite =
+    mode === 'satellite';
+
+  // Liga/desliga somente as camadas originais do OpenFreeMap.
+  for(const layer of baseStyleLayers){
+
+    if(map.getLayer(layer.id)){
+
+      map.setLayoutProperty(
+        layer.id,
+        'visibility',
+
+        satellite
+          ? 'none'
+          : layer.visibility
+      );
+    }
+  }
+
+  map.setLayoutProperty(
+    'basemap-satellite',
+    'visibility',
+    satellite
+      ? 'visible'
+      : 'none'
+  );
+}
+
+document
+  .getElementById('basemap-select')
+  .addEventListener(
+    'change',
+    e => setBasemap(e.target.value)
+  );
 
 function toggleVector(key,visible){
   const state=visible?'visible':'none';
