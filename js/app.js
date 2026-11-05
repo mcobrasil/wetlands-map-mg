@@ -252,9 +252,9 @@ map.on('load',async()=>{
           'fill-color':[
             'match',
             ['get','Bioma'],
-            'Mata Atlântica','#008F1C',
-            'Cerrado','#76E633',
-            'Caatinga','#DBFF61',
+            'Mata Atlântica','#87D180',
+            'Cerrado','#EA7671',
+            'Caatinga','#DCC573',
             '#94a3b8'
           ],
           'fill-opacity':0.18
@@ -281,19 +281,9 @@ map.on('load',async()=>{
     }
 
     const paint={
-      'line-color':
-        key==='biomas'
-        ? [
-            'match',
-            ['get','Bioma'],
-            'Mata Atlântica','#008F1C',
-            'Cerrado','#76E633',
-            'Caatinga','#DBFF61',
-            '#64748b'
-          ]
-        : d.color,
-      'line-width':d.width,
-      'line-opacity':0.9
+      'line-color':d.color,
+      'line-width':key==='biomas' ? 0 : d.width,
+      'line-opacity':key==='biomas' ? 0 : 0.9
     };
 
     if(d.dash) paint['line-dasharray']=d.dash;
