@@ -252,7 +252,7 @@ map.on('load',async()=>{
           'fill-color':[
             'match',
             ['get','Bioma'],
-            'Mata Atlântica','#35F73C',
+            'Mata Atlântica','#FF6F00',
             'Cerrado','#F73E54',
             'Caatinga','#F7CA3B',
             '#94a3b8'
