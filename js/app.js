@@ -73,7 +73,7 @@ const vectorDefs = {
  mg:{
    url:urls.mg,
    visible:true,
-   color:'#222222',
+   color:'#A1A1A1',
    width:3.6,
    dash:null
  },
@@ -129,7 +129,7 @@ const vectorDefs = {
  bacias:{
    url:urls.bacias,
    visible:false,
-   color:'#0B3CB8',
+   color:'#004FF7',
    width:1.8,
    dash:[6,3]
  }
@@ -252,12 +252,12 @@ map.on('load',async()=>{
           'fill-color':[
             'match',
             ['get','Bioma'],
-            'Mata Atlântica','#87D180',
-            'Cerrado','#EA7671',
-            'Caatinga','#DCC573',
+            'Mata Atlântica','#35F73C',
+            'Cerrado','#F73E54',
+            'Caatinga','#F7CA3B',
             '#94a3b8'
           ],
-          'fill-opacity':0.18
+          'fill-opacity':0.20
         }
       });
 
@@ -418,9 +418,9 @@ document.getElementById('toggle-wetlands')
 // -----------------------------------------------------------
 
 const biomeControls = {
-  'toggle-bioma-mata':'Mata Atlântica',
+  'toggle-bioma-caatinga':'Caatinga',
   'toggle-bioma-cerrado':'Cerrado',
-  'toggle-bioma-caatinga':'Caatinga'
+  'toggle-bioma-mata':'Mata Atlântica'
 };
 
 function updateBiomes(){
