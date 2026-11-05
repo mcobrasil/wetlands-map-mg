@@ -29,7 +29,7 @@ input[type=range]{width:100%}
 .swatch{width:23px;height:15px;border-radius:3px;background:#35B9E6}
 
 .line-sample{width:25px;height:0;border-top-style:solid}
-.mg-line{border-top-width:4px;border-top-color:#222222}
+.mg-line{border-top-width:4px;border-top-color:#A1A1A1}
 .mun-line{border-top-width:1px;border-top-color:#D9D9D9}
 .ri-line{border-top-width:2px;border-top-color:#FFAB00;border-top-style:dashed}
 .rint-line{border-top-width:2px;border-top-color:#FF4600}
